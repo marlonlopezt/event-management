@@ -48,4 +48,8 @@ public class EventController {
     public ResponseEntity<?> getEventsByUserId(@PathVariable("userId") Integer userId) {
         return eventService.getEventsByUserId(userId);
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteEvent(@PathVariable("id") Integer eventId) {
+        return eventService.deleteEvent(eventId);
+    }
 }

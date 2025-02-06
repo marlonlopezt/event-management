@@ -89,4 +89,14 @@ public class EventService {
         }
         return ResponseEntity.ok(events);
     }
+
+    public ResponseEntity<?> deleteEvent(Integer eventId) {
+        Optional<Event> eventOpt = eventRepository.findById(eventId);
+        if (eventOpt.isPresent()) {
+            eventRepository.deleteById(eventId);
+            return ResponseEntity.ok("{\"mensaje\": \"Evento eliminado exitosamente\"}");
+        } else {
+            return ResponseEntity.status(404).body("{\"mensaje\": \"Evento no encontrado\"}");
+        }
+    }
 }
